@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Licensed to Elasticsearch B.V under one or more agreements.
+ * Elasticsearch B.V licenses this file to you under the Apache 2.0 License.
+ * See the LICENSE file in the project root for more information
+ */
+
+namespace Elastic\ECS\Types;
+
+use JsonSerializable;
+
+/**
+ * {{ description }}
+ *
+ * @version {{ version }}
+ *
+ * @see {{ docsUrl }}
+ */
+final class {{ className }} implements JsonSerializable
+{
+    /** @var array */
+    private $data = [];
+
+{% for method in methodCollection %}
+    /**
+     * {{ method.description }}
+     *
+     * @example {{ method.example }}
+     * @param {{ method.type }} $value
+     * @return $this
+     */
+    public function set{{ method.name }}({{ method.type }} $value): {{  className }}
+    {
+        $this->data['{{ method.internal | raw }}'] = $value;
+        return $this;
+    }
+
+{% endfor %}
+    /**
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
+        return $this->data;
+    }
+}

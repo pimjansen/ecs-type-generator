@@ -1,0 +1,7 @@
+{
+  "require": {
+    "symfony/yaml": "^5.2",
+    "ext-json": "*",
+    "twig/twig": "^3.3"
+  }
+}
